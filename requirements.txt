@@ -5,4 +5,4 @@ networkx==3.3
 pillow==11.0.0
 sqlparse==0.5.1
 tzdata==2024.1
-gunicorn == 22.0.0
+gunicorn = 22.0.0
