@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}'s Resume</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #222;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        section {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            color: #444;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        p, li {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Specific styling for each section */
+        .contact-info, .skills, .education, .experience, .projects {
+            margin-bottom: 15px;
+        }
+
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .skills li {
+            background-color: grey;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid black;  /* Adds a blue border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a shadow */
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{% static 'farewell.jpg' %}" alt="Profile Picture" class="profile-image">
+        <h1>{{ name }}</h1>
+        <p>{{ title }}</p>
+    </header>
+
+    <section class="contact-info">
+        <h2>Contact Information</h2>
+        <ul>
+            <li>Email: {{ contact_info.email }}</li>
+            <li>Phone: {{ contact_info.phone }}</li>
+            <li><a href="{{ contact_info.linkedin }}" target="_blank">LinkedIn</a></li>
+            <li><a href="{{ contact_info.github }}" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+    <section class="education">
+        <h2>Education</h2>
+        {% for edu in education %}
+            <h3>{{ edu.institution }}</h3>
+            <p>{{ edu.degree }}, {{ edu.year }}</p>
+        {% endfor %}
+    </section>
+
+    <section class="achievements">
+        <h2>Achievements</h2>
+        <ul>
+            {% for achievement in achievements %}
+                <li>{{ achievement }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="hobbies-and-interests">
+        <h2>Hobbies and Interests</h2>
+        <ul>
+            {% for hobby in hobbies_and_interests %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="languages">
+        <h2>Languages</h2>
+        <ul>
+            {% for language in languages %}
+                <li>{{ language }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+</body>
+</html>
